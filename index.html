@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imran Hossain</title>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23B5281C'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23F2F0EB'>i</text></svg>">
+    <!-- Favicon from repo -->
+    <link rel="icon" type="image/png" href="imranh_favicon.png">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Space+Grotesk:wght@300;400;500;600&display=swap');
@@ -60,18 +60,11 @@
             gap: 2rem;
         }
 
-        .site-name {
-            font-family: var(--font-sans);
-            font-size: 1.05rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            color: var(--text-primary);
-            text-decoration: none;
-            white-space: nowrap;
-            flex-shrink: 0;
+        .site-logo {
+            height: 28px;
+            width: auto;
+            display: block;
         }
-
-        .site-name .accent { color: var(--accent); }
 
         .main-nav {
             display: flex;
@@ -164,8 +157,8 @@
         /* ══ HERO ══ */
         .hero {
             display: grid;
-            grid-template-columns: 1fr 210px;
-            gap: 4.5rem;
+            grid-template-columns: 1fr 160px;
+            gap: 4rem;
             align-items: start;
             padding: 5.5rem 0 5rem;
             border-bottom: 1px solid var(--border);
@@ -174,21 +167,11 @@
         .hero-text {
             display: flex;
             flex-direction: column;
-            gap: 0;
-        }
-
-        .hero-eyebrow {
-            font-size: 0.68rem;
-            font-weight: 500;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 1rem;
         }
 
         .hero-name {
             font-family: var(--font-serif);
-            font-size: clamp(3.2rem, 5.5vw, 5rem);
+            font-size: clamp(3rem, 5vw, 4.6rem);
             font-weight: 600;
             line-height: 1.0;
             letter-spacing: -0.02em;
@@ -198,7 +181,7 @@
 
         .hero-tagline {
             font-family: var(--font-serif);
-            font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+            font-size: clamp(1.05rem, 1.6vw, 1.3rem);
             font-weight: 400;
             font-style: italic;
             color: var(--text-secondary);
@@ -214,35 +197,22 @@
         .hero-desc {
             font-size: 0.9rem;
             font-weight: 300;
-            line-height: 1.85;
+            line-height: 1.9;
             color: var(--text-secondary);
-            max-width: 500px;
-            margin-bottom: 2rem;
+            max-width: 560px;
+            margin-bottom: 1.75rem;
         }
 
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
+        .hero-desc p + p {
+            margin-top: 1em;
         }
 
-        .tag {
-            font-size: 0.64rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-            padding: 0.28rem 0.75rem;
-            border-radius: 2px;
-        }
-
-        /* Social icons in hero */
+        /* Social icons */
         .hero-socials {
             display: flex;
             align-items: center;
-            gap: 0.85rem;
+            gap: 0.75rem;
+            margin-bottom: 1.1rem;
         }
 
         .social-icon-link {
@@ -267,20 +237,30 @@
             transform: translateY(-2px);
         }
 
-        .social-icon-link svg {
-            display: block;
-            flex-shrink: 0;
+        .social-icon-link svg { display: block; flex-shrink: 0; }
+
+        /* Email line */
+        .hero-email {
+            font-size: 0.82rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
         }
+
+        .hero-email:hover { color: var(--accent); }
 
         /* Photo */
         .hero-photo {
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding-top: 0.5rem;
         }
 
         .photo-frame {
-            width: 80%;
+            width: 100%;
             aspect-ratio: 4 / 5;
             background-color: #E4E0D9;
             border: 1px solid var(--border);
@@ -288,15 +268,15 @@
         }
 
         .photo-frame img {
-            width: 80%;
-            height: 80%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: block;
         }
 
         .photo-placeholder {
-            width: 80%;
-            height: 80%;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -343,7 +323,7 @@
             color: var(--text-secondary);
         }
 
-        /* Publication rows */
+        /* Publication rows — 3 columns */
         .pub-list {
             display: flex;
             flex-direction: column;
@@ -352,14 +332,14 @@
 
         .pub-item {
             display: grid;
-            grid-template-columns: 72px 120px 1fr 100px;
+            grid-template-columns: 72px 120px 1fr;
             align-items: baseline;
+            gap: 0 1rem;
             padding: 1.2rem 0;
             border-bottom: 1px solid var(--border);
             text-decoration: none;
             color: var(--text-primary);
             transition: background 0.15s;
-            gap: 0 1rem;
         }
 
         .pub-item:hover { background: rgba(0,0,0,0.02); }
@@ -369,7 +349,7 @@
             font-style: italic;
         }
 
-        .pub-year, .pub-type, .pub-outlet {
+        .pub-year, .pub-type {
             font-size: 0.69rem;
             font-weight: 500;
             letter-spacing: 0.05em;
@@ -377,13 +357,10 @@
             color: var(--text-secondary);
         }
 
-        .pub-outlet { text-align: right; }
-
         .pub-title {
             font-family: var(--font-serif);
             font-size: 1.35rem;
             font-weight: 500;
-            padding-right: 1.5rem;
             color: var(--text-primary);
             transition: color 0.2s;
             line-height: 1.25;
@@ -401,36 +378,10 @@
 
         /* ══ FOOTER ══ */
         footer {
-            padding: 3rem 0 3.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-            text-align: center;
-        }
-
-        .footer-socials {
+            padding: 2.5rem 0 3rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
-        }
-
-        .footer-email {
-            font-size: 0.8rem;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-email:hover { color: var(--accent); }
-
-        .footer-divider {
-            width: 40px;
-            height: 1px;
-            background: var(--border);
         }
 
         .footer-copy {
@@ -443,6 +394,7 @@
         /* ══ RESPONSIVE ══ */
         @media (max-width: 900px) {
             :root { --side-pad: 2rem; }
+
             .main-nav { display: none; }
             .hamburger { display: flex; }
 
@@ -453,20 +405,17 @@
             }
 
             .hero-photo {
-                max-width: 180px;
+                max-width: 140px;
             }
 
-            .hero-text { order: 1; }
-            .hero-photo { order: 0; }
-
             .pub-item { grid-template-columns: 60px 1fr; }
-            .pub-type, .pub-outlet { display: none; }
+            .pub-type { display: none; }
         }
 
         @media (max-width: 640px) {
             :root { --side-pad: 1.25rem; }
             .hero-name { font-size: 2.8rem; }
-            .hero-photo { max-width: 150px; }
+            .hero-photo { max-width: 120px; }
         }
     </style>
 </head>
@@ -475,7 +424,9 @@
 <!-- ══ HEADER ══ -->
 <header>
     <div class="header-inner">
-        <a href="#" class="site-name">imranh<span class="accent">.</span></a>
+        <a href="#">
+            <img src="imranh_logo.png" alt="imranh" class="site-logo">
+        </a>
 
         <nav>
             <ul class="main-nav">
@@ -503,26 +454,18 @@
     <!-- Hero -->
     <section class="hero">
 
-        <div class="hero-photo">
-           <img src="photo.jpg" alt="Imran Hossain">
-        </div>
-
         <div class="hero-text">
-            <p class="hero-eyebrow">Economics · Mathematics · Journalism</p>
             <h1 class="hero-name">Imran<br>Hossain</h1>
             <p class="hero-tagline">Quantifying narrative. <i>Qualifying data.</i></p>
-            <p class="hero-desc">
-                Research Associate at BIGD, BRAC University, working in the Gender and Social Development Cluster. Pursuing an MS in Mathematics at AUST; BSc in Economics from Jahangirnagar University. Former feature journalist at <em>The Business Standard</em> with over a hundred stories on socioeconomic issues, culture, and technology. Academic interests in microeconomics, political economy, and development economics.
-            </p>
-            <div class="hero-tags">
-                <span class="tag">MS Mathematics</span>
-                <span class="tag">BSc Economics</span>
-                <span class="tag">BIGD · BRAC University</span>
-                <span class="tag">Dhaka, Bangladesh</span>
+
+            <div class="hero-desc">
+                <p>I am a Research Associate at the BRAC Institute of Governance and Development (BIGD), BRAC University, where I am part of the Gender and Social Development Cluster, working under the supervision of Dr. Shaila Ahmed. My work involves data collection, quantitative analysis, and applied policy research — building hands-on experience in development-focused empirical work.</p>
+                <p>Alongside my professional work, I am pursuing an MS in Mathematics at Ahsanullah University of Science and Technology. Before that, I completed my BSc in Economics at Jahangirnagar University.</p>
+                <p>Prior to joining BIGD, I worked full-time for over a year as a feature journalist at <em>The Business Standard</em>, one of Bangladesh's leading English-language dailies, covering over a hundred stories on socioeconomic issues, culture, education, and technology.</p>
+                <p>I aim to pursue higher studies in economics. My academic interests lie in microeconomics, political economy, and development economics.</p>
             </div>
 
             <div class="hero-socials">
-                <!-- LinkedIn -->
                 <a class="social-icon-link" href="https://www.linkedin.com/in/imranh47/" target="_blank" rel="noopener" aria-label="LinkedIn">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -530,18 +473,24 @@
                         <circle cx="4" cy="4" r="2"/>
                     </svg>
                 </a>
-                <!-- X / Twitter -->
                 <a class="social-icon-link" href="https://x.com/ImranH_47/" target="_blank" rel="noopener" aria-label="X (Twitter)">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                     </svg>
                 </a>
-                <!-- GitHub -->
                 <a class="social-icon-link" href="https://github.com/ImranH47" target="_blank" rel="noopener" aria-label="GitHub">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
                     </svg>
                 </a>
+            </div>
+
+            <a href="mailto:imran.hossen@bracu.ac.bd" class="hero-email">imran.hossen@bracu.ac.bd</a>
+        </div>
+
+        <div class="hero-photo">
+            <div class="photo-frame">
+                <img src="photo.jpg" alt="Imran Hossain">
             </div>
         </div>
 
@@ -563,7 +512,6 @@
                     Does Crop Diversification Improve Rural Household Income in Bangladesh
                     <span class="pub-authors">Imran Hossain</span>
                 </span>
-                <span class="pub-outlet">Draft</span>
             </a>
 
             <a href="https://www.academia.edu/165400200/Does_Institutional_Quality_Matter_for_Financial_Development_Evidence_from_Six_Asian_Emerging_Economies_"
@@ -574,7 +522,6 @@
                     Does Institutional Quality Matter for Financial Development? Evidence from Six Asian Emerging Economies
                     <span class="pub-authors">Samia Islam, Mohammad Obaidullah, Imran Hossain, Ann Naser Nabil</span>
                 </span>
-                <span class="pub-outlet">Paper</span>
             </a>
 
         </div>
@@ -593,7 +540,6 @@
                 <span class="pub-year">TBS</span>
                 <span class="pub-type">Feature</span>
                 <span class="pub-title">What About Our Own Adolescents?</span>
-                <span class="pub-outlet">Panorama</span>
             </a>
 
             <a href="https://www.tbsnews.net/features/panorama/online-moral-police-forces-cracking-down-interfaith-relationships-1056001"
@@ -601,7 +547,6 @@
                 <span class="pub-year">TBS</span>
                 <span class="pub-type">Feature</span>
                 <span class="pub-title">Online Moral Police Forces Cracking Down on Interfaith Relationships</span>
-                <span class="pub-outlet">Panorama</span>
             </a>
 
             <a href="https://www.tbsnews.net/features/panorama/dhakas-buried-past-archaeological-excavation-unveils-new-history-988176"
@@ -609,7 +554,6 @@
                 <span class="pub-year">TBS</span>
                 <span class="pub-type">Feature</span>
                 <span class="pub-title">Dhaka's Buried Past: Archaeological Excavation Unveils New History</span>
-                <span class="pub-outlet">Panorama</span>
             </a>
 
             <a href="https://www.tbsnews.net/features/panorama/phd-landscape-bangladesh-reality-check-1090906"
@@ -617,7 +561,6 @@
                 <span class="pub-year">TBS</span>
                 <span class="pub-type">Feature</span>
                 <span class="pub-title">PhD Landscape in Bangladesh: A Reality Check</span>
-                <span class="pub-outlet">Panorama</span>
             </a>
 
             <a href="https://www.tbsnews.net/features/panorama/how-crypto-thrives-bangladeshs-legal-grey-zone-1137576"
@@ -625,7 +568,6 @@
                 <span class="pub-year">TBS</span>
                 <span class="pub-type">Feature</span>
                 <span class="pub-title">How Crypto Thrives in Bangladesh's Legal Grey Zone</span>
-                <span class="pub-outlet">Panorama</span>
             </a>
 
         </div>
@@ -635,33 +577,7 @@
 
 <!-- ══ FOOTER ══ -->
 <footer class="page">
-
-    <div class="footer-socials">
-        <a class="social-icon-link" href="https://www.linkedin.com/in/imranh47/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect x="2" y="9" width="4" height="12"/>
-                <circle cx="4" cy="4" r="2"/>
-            </svg>
-        </a>
-        <a class="social-icon-link" href="https://x.com/ImranH_47/" target="_blank" rel="noopener" aria-label="X (Twitter)">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-        </a>
-        <a class="social-icon-link" href="https://github.com/ImranH47" target="_blank" rel="noopener" aria-label="GitHub">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
-            </svg>
-        </a>
-    </div>
-
-    <div class="footer-divider"></div>
-
-    <a href="mailto:imran.hossen@bracu.ac.bd" class="footer-email">imran.hossen@bracu.ac.bd</a>
-
     <p class="footer-copy">Imran Hossain · Dhaka, Bangladesh</p>
-
 </footer>
 
 <script>
@@ -676,7 +592,6 @@
         mobileNav.classList.remove('open');
     }
 
-    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
             const target = document.querySelector(a.getAttribute('href'));
