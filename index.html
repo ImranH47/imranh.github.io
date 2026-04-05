@@ -253,10 +253,10 @@
         .hero-tagline i { color: var(--accent); font-style: italic; }
 
         .hero-desc {
-            font-size: 0.875rem;
+            font-size: 1rem;
             font-weight: 300;
             line-height: 1.95;
-            color: var(--text-secondary);
+            color: var(--text-primary);
             max-width: 560px;
             margin-bottom: 2rem;
         }
@@ -603,7 +603,7 @@
             }
             /* Photo before text on mobile */
             .hero-text  { order: 2; }
-            .hero-photo { order: 1; max-width: 200px; }
+            .hero-photo { order: 1; max-width: 260px; }
             /* Remove decorative offset — it breaks on narrow viewports */
             .hero-photo::before { display: none; }
 
@@ -618,7 +618,7 @@
         @media (max-width: 640px) {
             :root { --side-pad: 1.25rem; }
             .hero-name  { font-size: 2.8rem; }
-            .hero-photo { max-width: 170px; }
+            .hero-photo { max-width: 240px; }
             .scroll-top { bottom: 1.25rem; right: 1.25rem; }
             .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
             /* Further collapse pub items on small phones */
@@ -721,15 +721,15 @@
             </div>
 
             <!-- Cloudflare-encoded email kept as-is -->
-            <a href="/cdn-cgi/l/email-protection#254c4857444b0b4d4a5656404b6547574446500b44460b4741" class="hero-email">
-                <!-- NEW: small mail icon beside address -->
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <rect x="2" y="4" width="20" height="16" rx="2"/>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                </svg>
-                <span class="__cf_email__" data-cfemail="1d74706f7c733375726e6e78735d7f6f7c7e68337c7e337f79">[email&#160;protected]</span>
-            </a>
+            <a href="mailto:imran.hossen@bracu.ac.bd" class="hero-email">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+    </svg>
+    imran.hossen@bracu.ac.bd
+</a>
+
         </div>
 
         <!-- NEW: .hero-photo::before adds a decorative offset shadow frame -->
