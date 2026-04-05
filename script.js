@@ -1,81 +1,77 @@
+/**
+ * script.js - Handles scroll animations, smooth navigation, 
+ * scroll-to-top visibility, and accessibility enhancements.
+ * Lightweight, dependency-free, and optimized for GitHub Pages.
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Mobile Menu Toggle
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobile-nav');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
+  
+  // 1. Intersection Observer for scroll-triggered fade-ins
+  const fadeElements = document.querySelectorAll('.fade-in-section');
+  
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15 // Trigger when 15% of element is visible
+  };
 
-    const toggleMenu = () => {
-        const isOpen = mobileNav.classList.toggle('open');
-        hamburger.classList.toggle('open');
-        hamburger.setAttribute('aria-expanded', isOpen);
-        mobileNav.setAttribute('aria-hidden', !isOpen);
-    };
-
-    hamburger.addEventListener('click', toggleMenu);
-
-    // Close mobile nav when a link is clicked
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (mobileNav.classList.contains('open')) {
-                toggleMenu();
-            }
-        });
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target); // Only animate once
+      }
     });
+  }, observerOptions);
 
-    // 2. Dynamic Copyright Year
-    const yearSpan = document.getElementById('currentYear');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
+  fadeElements.forEach(el => observer.observe(el));
+
+  // 2. Scroll-to-top button logic
+  const scrollBtn = document.getElementById('scroll-to-top');
+  const scrollThreshold = 400;
+
+  const toggleScrollButton = () => {
+    if (window.scrollY > scrollThreshold) {
+      scrollBtn.classList.add('visible');
+      scrollBtn.removeAttribute('hidden');
+    } else {
+      scrollBtn.classList.remove('visible');
+      // Keep in DOM but hide after transition to prevent layout shift
+      setTimeout(() => {
+        if (window.scrollY <= scrollThreshold) scrollBtn.setAttribute('hidden', '');
+      }, 300);
     }
+  };
 
-    // 3. Scroll & Sticky Header Effects
-    const header = document.querySelector('header');
-    const scrollTopBtn = document.getElementById('scrollToTopBtn');
+  window.addEventListener('scroll', toggleScrollButton, { passive: true });
+  
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 3. Active Navigation Highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+  const activateNavLink = () => {
+    const scrollPos = window.scrollY + 150; // Offset for header
     
-    window.addEventListener('scroll', () => {
-        // Add shadow to header when scrolled down
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
 
-        // Show/Hide Scroll-to-top button
-        if (window.scrollY > 400) {
-            scrollTopBtn.classList.add('show');
-        } else {
-            scrollTopBtn.classList.remove('show');
-        }
-    });
-
-    // 4. Scroll To Top Action
-    scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.style.color = ''; // Reset
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.style.color = 'var(--accent)';
+            link.style.fontWeight = '600';
+          }
         });
+      }
     });
+  };
 
-    // 5. Intersection Observer for Subtle Entrance Animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15 // Triggers when 15% of the element is visible
-    };
-
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // Optional: Stop observing once loaded to save performance
-                observer.unobserve(entry.target); 
-            }
-        });
-    }, observerOptions);
-
-    // Attach observer to all target elements
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        scrollObserver.observe(el);
-    });
+  window.addEventListener('scroll', activateNavLink, { passive: true });
 });
